@@ -1,0 +1,20 @@
+<xml>
+	
+	<group name="Cutting" icon="od.png">
+		<sub name="Face" src="lathe/face.ini" icon="lathe-facing.png"/>			
+		<sub name="Cutting params" src="lathe/cutting-params.ini" icon="threading-params.png"/>		
+	</group>
+
+	<group name="Threading" icon="threading.png">
+		<sub name="Thread" src="lathe/thread-adv.ini" icon="threading.png"/>
+		<sub name="Threading params" src="lathe/threading-params.ini" icon="threading-params.png"/>		
+	</group>
+			
+	<group name="Tool" icon="lathe-tool.png">
+		<sub name="Set lathe cuting params" src="lathe/cutting-params.ini" icon="lathe-cutting-params.png"/>
+		<sub name="Change tool" src="lathe/tool-change.ini" icon="lathe-tool-change.png"/>
+	</group>
+
+</xml>
+
+<!-- Do not forget to close <sub /> tags! -->	

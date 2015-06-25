@@ -1,0 +1,83 @@
+[INFO]
+warning = This file is rewritten every time a feature is added
+	and shows usage of each one
+	columns are : source, total usage, last session usage
+
+[VAR]
+topfeatures = 
+	ini/probe-down.ini	0	0
+	ini/mill/fv_slot-2.ini	0	0
+	ini/mill/drill.ini	1	0
+	ini/mill/fv_bolt-circle-irr.ini	5	0
+	ini/mill/n-gon.ini	2	0
+	ini/mill/rect-center.ini	0	0
+	ini/mill/chain/linked-arc-to-xyr.ini	0	0
+	ini/mill/fv_bolt-circle.ini	18	0
+	ini/mill/fv_circle.ini	1	0
+	ini/mill/fv_oval.ini	0	0
+	ini/mill/draw/line-abs.ini	0	0
+	ini/mill/cutting-params.ini	3	0
+	ini/mill/rect-spiral.ini	1	0
+	ini/mill/circle-pocket.ini	1	0
+	ini/mill/draw/line-rel.ini	0	0
+	ini/mill/circle-spiral.ini	0	0
+	ini/fv_tool-change.ini	4	0
+	ini/mill/rect.ini	2	0
+	ini/mill/chain4axis/cut-params.ini	1	0
+	ini/mill/arc-3points.ini	1	0
+	ini/tool-change.ini	2	0
+	ini/mill/polish.ini	2	0
+	ini/mill/set-tool-params.ini	3	0
+	ini/mill/arc-xyc.ini	2	0
+	ini/fv_change-units.ini	2	0
+	ini/mill/fv_slot-arc.ini	0	0
+	ini/mill/fv_slot.ini	0	0
+	ini/mill/chain/linked-arc-xyc.ini	1	0
+	ini/mill/oval.ini	1	0
+	ini/mill/circular-array.ini	1	0
+	ini/mill/chain4axis/line-yz.ini	1	0
+	ini/mill/fv_linear-array.ini	1	0
+	ini/mill/draw/arc-xyij-rel.ini	2	0
+	ini/mill/circle.ini	0	0
+	ini/mill/fv_rectangular-array.ini	1	0
+	ini/mill/draw/arc-xyij.ini	0	0
+	ini/fv_probe-edge.ini	0	0
+	ini/fv_drill-change.ini	16	0
+	ini/mill/line-xy.ini	0	0
+	ini/mill/arc-to-xyr.ini	1	0
+	ini/mill/chain/linked-line-xy.ini	0	0
+	ini/mill/fv_add-ttt.ini	0	0
+	ini/mill/hexagon.ini	2	0
+	ini/mill/fv_design-cube.ini	0	0
+	ini/fv_gcode.ini	0	0
+	ini/mill/draw/close.ini	0	0
+	ini/fv_task.ini	0	0
+	ini/fv_group.ini	0	0
+	ini/mill/fv_drill-one.ini	9	0
+	ini/mill/chain/linked-line-ar.ini	0	0
+	ini/mill/line-ar.ini	1	0
+	ini/probe-hole.ini	0	0
+	ini/probe-cube.ini	0	0
+	ini/mill/chain/linked-arc-3points.ini	0	0
+	ini/mill/fv_ellipse.ini	0	0
+	ini/mill/fv_rect-2.ini	0	0
+	ini/fv_probe-array.ini	0	0
+	ini/mill/fv_taper-hole.ini	0	0
+	ini/group.ini	0	0
+	ini/mill/chain4axis/arc-yzr.ini	0	0
+	ini/fv_set-probing-params.ini	1	0
+	ini/probe-cylinder.ini	0	0
+	ini/mill/rect-pocket.ini	1	0
+	ini/mill/fv_circle-2.ini	0	0
+	ini/mill/global-probing-params.ini	1	0
+	ini/mill/draw/draw.ini	2	0
+	ini/mill/fv_polygon.ini	0	0
+	ini/mill/chain/linkup.ini	1	0
+	ini/mill/array.ini	1	0
+	ini/mill/fv_circular-array.ini	10	0
+	ini/fv_probe-cube.ini	0	0
+	ini/mill/fv_rect.ini	4	0
+	ini/gcode.ini	0	0
+	ini/fv_probe-hole.ini	0	0
+	ini/compensation_map.ini	0	0
+
