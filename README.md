@@ -1,62 +1,65 @@
-LinuxCNC Features - native realtime CAM for LinuxCNC - aka new NGCGUI
+LinuxCNC Features v2 - native realtime CAM for LinuxCNC
+
+Welcome to this advanced version of LinuxCNC-Features.
+
+It is an almost complete re-write but with a few changes to your files
+ it will take full advantage of all the new features
+ there is also some settings you can do in the beginning of features.py
 
 
-0.	Simple usage
+1. Testing Stand Alone
 --------------------------------------------------------------------------------
-1. You can use LinuxCNC Features in "stand alone" mode. It is almost the same
-	except that the Features are not included into Axis window and just lays 
-	in a sepparate window. Everything else should work the same including
-	preview in Axis!
-	
-	To use LinuxCNC Features in stand alone mode, just start them after you
-	have started LinuxCNC providing path to your LinuxCNC ini file in 
-	--ini parameter
-	
-	Example:
-	(in the directory with features.py)
-	```sh
-	./features.py --ini=/home/nick/linuxcnc/configs/sim/axis/axis_mm.ini
-	```
+You are invited to test it and all you have to do is make sure you have python-lxml installed.
+To install python-lxml, simply open a terminal and copy the following command :
+
+sudo apt-get install python-lxml
+
+Download LinuxCNC-Features in the folder of your choice (recommended is ~/linuxcnc-features)
+
+Make sure features.py is executable
+
+Open a terminal in features directory and type ./features.py
+(Or simply double click on it)
+Default catalog is mill
+
+And yes, start linuxcnc in a terminal with this command :
+'linuxcnc ~/linuxcnc/configs/sim.axis/axis.ini' (not axis_mm.ini).
+You can start it before or after features.py
+
+Open some examples and if all is well, enjoy.
 
 
-1.	Install
+2. Using Embedded
 --------------------------------------------------------------------------------
+Install by copying the following lines in a terminal
 
-1. Move everything to /usr/share/pyshared/gladevcp/
-	Or better create links there:
-	```sh
-	cd /usr/share/pyshared/gladevcp/
-	sudo ln /full-path-to-git-repository/features.py -s
-	sudo ln /full-path-to-git-repository/features.glade -s
-	sudo ln /full-path-to-git-repository/subroutines -s
-	```	
-
-
-2. Install python-lxml 
-	```sh
+1. Install python-lxml
 	sudo apt-get install python-lxml 
-	```
-
-3. Create links into /usr/lib/pymodules/python2.6/gladevcp
 
 
-	```sh
-	cd /usr/lib/pymodules/python2.6/gladevcp
-	sudo ln /usr/share/pyshared/gladevcp/features.py -s
-	sudo ln /usr/share/pyshared/gladevcp/features.glade -s
-	sudo ln /usr/share/pyshared/gladevcp/subroutines -s
-	```
-
-4. Change hal_pythonplugin.py in /usr/share/pyshared/gladevcp/hal_pythonplugin.py
-	Add (find calculator add after :)):
-	```python
-	from features import Features
-	```	
-
-5. Change hal_python.xml in /usr/share/glade3/catalogs glade3 can be glade2
+2. Create links into /usr/share/pyshared/gladevcp/ 
+	(change directory as required)
 	
-	Add (find first calculator add after :)):
-	```xml
+	cd /usr/share/pyshared/gladevcp/
+	sudo ln /home/$USER/linuxcnc-features/features.py -s
+	sudo ln /home/$USER/linuxcnc-features/features.glade -s
+	
+
+3. Change hal_pythonplugin.py in /usr/share/pyshared/gladevcp/
+
+	sudo gedit /usr/share/pyshared/gladevcp/hal_pythonplugin.py
+
+	Add this new line anywhere
+		from features import Features
+
+
+4. Change hal_python.xml in /usr/share/glade3/catalogs glade3 can be glade2
+
+	sudo gedit /usr/share/glade3/catalogs/hal_python.xml
+
+	Find :  <glade-widget-classes>
+	(it is in the beginning)
+	Add after:
 		<glade-widget-class name="Features" generic-name="features" title="features">
 		    <properties>
 		        <property id="size" query="False" default="1" visible="False"/>
@@ -64,60 +67,98 @@ LinuxCNC Features - native realtime CAM for LinuxCNC - aka new NGCGUI
 		        <property id="homogeneous" query="False" default="0" visible="False"/>
 		    </properties>
 		</glade-widget-class>
-	```
-	
-	 Add (find second calculator add after :)):
-	```xml
+
+	Find :  <glade-widget-group name="python" title="HAL Python">
+	Add after :
 		<glade-widget-class-ref name="Features"/>
-	```
 
-6. Translations:
+	IMPORTANT NOTE : when linuxcnc updates, it recreates directories and if features do not load
+	you will have to redo steps 2, 3 and 4
+	
+	
+5. Create links into /usr/lib/pymodules/python2.7/gladevcp
+
+	cd /usr/lib/pymodules/python2.7/gladevcp
+	sudo ln /usr/share/pyshared/gladevcp/features.py -s
+	sudo ln /usr/share/pyshared/gladevcp/features.glade -s
+
+
+6. Open your linuxcnc ini file (follow the example in ~/linuxcnc-features/mill.ini)
+	I recommend you use ~/linuxcnc=features/mill.ini or ~/linuxcnc-features/lathe.ini
+	find 
+		[DISPLAY]
+ 		make sure DISPLAY = axis
+	add this line anywhere in the section
+		GLADEVCP = -U --catalog=mill features.ui
+	or
+		GLADEVCP = -U --catalog=lathe features.ui
+
+	in the same section, find PROGRAM_PREFIX
+	if it does not exist, add it and give it the value
+		PROGRAM_PREFIX = ./scripts
+
+	find 
+		[RS274NGC] section
+	add the path to ngc sub that will be called from your ngc scripts that you load in linuxcnc
+		SUBROUTINE_PATH = ./lib
+
+	features.ui is allready in ~/linuxcnc-features directory
+
+
+You should now be able to start linuxcnc and have Features vcp embedded in axis
+THE COMMAND IS : linuxcnc /home/$USER/linuxcnc-features/mill.ini
+
+
+7. Optional: Translations
+	Translation will work in Stand Alone AND Embedded modes
+
 	Make links in your system locale directories to translation files
-	```sh
+	
 	cd /usr/share/locale/<<<YOUR LOCALE>>>/LC_MESSAGES
+	
 	sudo ln /<full path to features sourse>/locale/<<<YOUR LOCALE>>>/LC_MESSAGES/linuxcnc-features.mo -s
-	```
+
 	Example:
-	```sh
-	cd /usr/share/locale/ru/LC_MESSAGES
-	sudo ln /home/nick/Design/cnc-club.ru/linuxcnc/features/locale/ru/LC_MESSAGES/linuxcnc-features.mo -s
-	```
+	cd /usr/share/locale/fr/LC_MESSAGES
+	sudo ln /home/$USER/linuxcnc/features/locale/fr/LC_MESSAGES/linuxcnc-features.mo -s
 
 
-2.	Extending subroutines
+3.	Extending subroutines
 --------------------------------------------------------------------------------
 
 1. Param subsitutions
 	"#param_name" can be used to substitude parameters from the feature. 
 	"#self_id" - unique id made of feature Name + smallest integer id. 
 
-2. Eval and exec
-	```xml
-	<eval>"hello world!"</eval>
-	```
+2. Eval and exec	
+	<eval>"hello world!"</eval>	
 	everything inside &lt;eval&gt; tag will be passed
 	trought python's eval function. 
 	
-	```xml
 	<exec>print "hello world"</exec>
-	```
 	allmost the same but will take all printed data.
 	
 	you can use self as feature's self.
 
-3. Import 
-	```xml
-	<import>filename<import>
-	```
-	will import file into feature text before proceccing.	
-	
 3. Including Gcode
-	G-code ngc files can be included by using one of the following functions: 
-	```xml
+	G-code ngc files can be included by using one of the following functions:
+	
+	[DEFINITIONS]
+	content = 
 		<eval>self.include_once("rotate-xy.ngc")</eval>
 		<eval>self.include("rotate-xy.ngc")</eval>
-	```
 
+4. Data types
+	[SUBROUTINE] type should be lower case, short, without space. Ex : circle, rect, probe-dn
+
+	Params types are : string, float, int, bool (or boolean), header (or hdr), combo, items
+	Note : you can change string, float and int types on the fly with the context menu. 
+	This is usefull with variables
+	
+	when using a value like #<var_name> use string because if will evaluate to 0 if int used or 0.0 if float
+	
+	Examples in ini/mill/fv_circle.ini and others
+	
+	Note : icons and images only need name.ext
+	
 --------------------------------------------------------------------------------
-
-Some information on Russian can be obtained here: http://cnc-club.ru/forum/viewtopic.php?f=15&t=3124&p=72441#p72441

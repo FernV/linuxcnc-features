@@ -248,11 +248,11 @@ o<fv_rectangle> sub (CALL [#param_x] [#param_y] [#param_ref] [#<w>] [#<h>] [#par
 			#<len_w> = [#<w> - #5410]
 			#<len_h> = [#<h> - #5410]
 			#<len_ch> = [#<cr> * 1.414213]
-			o<len_calc-00> if [#<st> EQ 3]
+			o<len_calc-01> if [#<st> EQ 3]
 				#<len_arc> = [[#<cr> + #5410 / 2] * 3.141592 / 2]			
-			o<len_calc-00> else
+			o<len_calc-01> else
 				#<len_arc> = [[#<cr> - #5410 / 2] * 3.141592 / 2]			
-			o<len_calc-00> endif
+			o<len_calc-01> endif
 		o<len_calc> endif		
 		
 		#<_cut_to:seg_z> = #<cut_start>

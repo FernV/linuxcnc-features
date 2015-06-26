@@ -19,7 +19,7 @@ msgstr ""
 
 #: locale/menu.xml:2
 msgid "Regular Shape"
-msgstr ""
+msgstr "Forme régulière"
 
 #: locale/menu.xml:4
 msgid "Rectangle From 1 point"
@@ -39,11 +39,11 @@ msgstr ""
 
 #: locale/menu.xml:12
 msgid "Circle"
-msgstr ""
+msgstr "Cercle"
 
 #: locale/menu.xml:14
 msgid "Create a circle"
-msgstr ""
+msgstr "Créer un cercle"
 
 #: locale/menu.xml:16
 msgid "Circle By 2 Points"
@@ -79,11 +79,11 @@ msgstr ""
 
 #: locale/menu.xml:32
 msgid "Oval"
-msgstr ""
+msgstr "Ovale"
 
 #: locale/menu.xml:34
 msgid "Create an oval shape"
-msgstr ""
+msgstr "Créer une forme ovale"
 
 #: locale/menu.xml:36 locale/fv_ellipse.ini:2
 msgid "Ellipse"
@@ -91,19 +91,19 @@ msgstr ""
 
 #: locale/menu.xml:38
 msgid "Create an ellipse"
-msgstr ""
+msgstr "Créer une ellipse"
 
 #: locale/menu.xml:40
 msgid "Polygon"
-msgstr ""
+msgstr "Polygone"
 
 #: locale/menu.xml:42
 msgid "Polygon of N edges"
-msgstr ""
+msgstr "Polygone de n côtés"
 
 #: locale/menu.xml:44
 msgid "Drilling"
-msgstr ""
+msgstr "Perçage"
 
 #: locale/menu.xml:46
 msgid "Single Or In-Line Holes"
@@ -115,7 +115,7 @@ msgstr ""
 
 #: locale/menu.xml:50
 msgid "Regular Circle"
-msgstr ""
+msgstr "Cercle régulier"
 
 #: locale/menu.xml:52
 msgid "Create a regular spaced holes circle"
@@ -123,7 +123,7 @@ msgstr ""
 
 #: locale/menu.xml:54
 msgid "Irregular Circle"
-msgstr ""
+msgstr "Cercle  irrégulier"
 
 #: locale/menu.xml:56
 msgid "Create a hole circle of different angle spacing"
@@ -135,7 +135,7 @@ msgstr ""
 
 #: locale/menu.xml:60
 msgid "Standard Group"
-msgstr ""
+msgstr "Groupe standard"
 
 #: locale/menu.xml:62
 msgid "Group features together"
@@ -143,7 +143,7 @@ msgstr ""
 
 #: locale/menu.xml:64
 msgid "Radial array"
-msgstr ""
+msgstr "Ensemble circulaire"
 
 #: locale/menu.xml:66
 msgid "Array based on diameter or distance"
@@ -151,7 +151,7 @@ msgstr ""
 
 #: locale/menu.xml:68 locale/fv_linear-array.ini:2
 msgid "Linear array"
-msgstr ""
+msgstr "Ensemble linéaire"
 
 #: locale/menu.xml:70
 msgid "Create a linear array"
@@ -159,7 +159,7 @@ msgstr ""
 
 #: locale/menu.xml:72
 msgid "Rectangular array"
-msgstr ""
+msgstr "Ensemble rectangulaire"
 
 #: locale/menu.xml:74
 msgid "Array from a corner or center"
@@ -167,11 +167,11 @@ msgstr ""
 
 #: locale/menu.xml:76
 msgid "Tools"
-msgstr ""
+msgstr "Outils"
 
 #: locale/menu.xml:78
 msgid "Change Tool"
-msgstr ""
+msgstr "Changer d'outils"
 
 #: locale/menu.xml:80 locale/menu.xml:84
 msgid "Select and set parameters"
@@ -179,11 +179,11 @@ msgstr ""
 
 #: locale/menu.xml:82
 msgid "Change Drill"
-msgstr ""
+msgstr "Changer de foret"
 
 #: locale/menu.xml:86
 msgid "Probing"
-msgstr ""
+msgstr "Palpage"
 
 #: locale/menu.xml:88
 msgid "Set Probing Params"
@@ -231,7 +231,7 @@ msgstr ""
 
 #: locale/menu.xml:110
 msgid "Task"
-msgstr ""
+msgstr "Tâche"
 
 #: locale/menu.xml:112
 msgid "Master feature"
@@ -287,7 +287,7 @@ msgstr ""
 
 #: locale/menu.xml:14
 msgid "Tool"
-msgstr ""
+msgstr "Outil"
 
 #: locale/menu.xml:16
 msgid "Set lathe cuting params"
@@ -386,11 +386,11 @@ msgstr ""
 
 #: features.py:929 features.py:1551
 msgid "_Top / Bottom Layout"
-msgstr ""
+msgstr "Disposition haut / bas"
 
 #: features.py:934 features.py:1557
 msgid "_Side By Side Layout"
-msgstr ""
+msgstr "Disposition côte à côte"
 
 #: features.py:942 features.py:1566
 msgid "_Use Widgets Box"
@@ -511,23 +511,23 @@ msgstr ""
 
 #: features.py:1464
 msgid "Change data type"
-msgstr ""
+msgstr "Changer type de donnée"
 
 #: features.py:1470
 msgid "String"
-msgstr ""
+msgstr "Chaîne"
 
 #: features.py:1475
 msgid "Integer"
-msgstr ""
+msgstr "Entier"
 
 #: features.py:1480
 msgid "Float"
-msgstr ""
+msgstr "Réel"
 
 #: features.py:1485
 msgid "Set digits"
-msgstr ""
+msgstr "Décimales"
 
 #: features.py:1499
 msgid "_Edit Current Feature"
@@ -568,11 +568,11 @@ msgstr ""
 
 #: features.py:2515
 msgid "Untitle.xml"
-msgstr ""
+msgstr "sansnom.xml"
 
 #: features.py:2580
 msgid "Preferences"
-msgstr ""
+msgstr "Préférences"
 
 #: features.py:2588
 msgid "Name Column Minimum Width"
@@ -592,7 +592,7 @@ msgstr ""
 
 #: features.py:2783
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: features.py:2792
 msgid "All files"
@@ -600,7 +600,7 @@ msgstr ""
 
 #: features.py:2833 features.py:2855
 msgid "Open"
-msgstr ""
+msgstr "Ouvrir"
 
 #: features.py:2874
 #, python-format
@@ -625,7 +625,7 @@ msgstr ""
 
 #: features.glade:83
 msgid "Duplicate"
-msgstr ""
+msgstr "Dupliquer"
 
 #: features.glade:97
 msgid "Remove selected feature <Ctrl+Del>"
@@ -641,7 +641,7 @@ msgstr ""
 
 #: features.glade:125
 msgid "Undo"
-msgstr ""
+msgstr "Défaire"
 
 #: features.glade:139
 msgid "Redo last Undo"
@@ -649,7 +649,7 @@ msgstr ""
 
 #: features.glade:141
 msgid "Redo"
-msgstr ""
+msgstr "Refaire"
 
 #: features.glade:165
 msgid "Move up <Ctrl+Up>"
@@ -657,7 +657,7 @@ msgstr ""
 
 #: features.glade:167
 msgid "Move Up"
-msgstr ""
+msgstr "Vers le haut"
 
 #: features.glade:181
 msgid "Move down <Ctrl+Down>"
@@ -665,7 +665,7 @@ msgstr ""
 
 #: features.glade:183
 msgid "Move Down"
-msgstr ""
+msgstr "Vers le bas"
 
 #: features.glade:207
 msgid "Add to Group <Ctrl+Right>"
@@ -716,7 +716,7 @@ msgstr ""
 #: locale/fv_probe-hole.ini:6 locale/fv_bolt-circle.ini:6
 #: locale/fv_probe-edge.ini:6 locale/fv_slot.ini:6
 msgid "Enabled"
-msgstr ""
+msgstr "Actif"
 
 #: locale/fv_gcode.ini:8
 msgid "Disabling will exclude lines"
@@ -901,7 +901,7 @@ msgstr ""
 
 #: locale/fv_gcode.ini:12
 msgid "<b>--- Lines ---</b>"
-msgstr ""
+msgstr "<b>--- Lignes ---</b>"
 
 #: locale/fv_gcode.ini:14 locale/fv_rect-2.ini:8 locale/fv_rect-2.ini:14
 #: locale/fv_rect-2.ini:20 locale/fv_rect-2.ini:50 locale/fv_rect-2.ini:68
@@ -956,7 +956,7 @@ msgstr ""
 
 #: locale/fv_gcode.ini:18
 msgid "Line 1"
-msgstr ""
+msgstr "Ligne 1"
 
 #: locale/fv_gcode.ini:20 locale/fv_gcode.ini:26 locale/fv_gcode.ini:32
 #: locale/fv_gcode.ini:38 locale/fv_gcode.ini:44 locale/fv_gcode.ini:50
@@ -965,23 +965,23 @@ msgstr ""
 
 #: locale/fv_gcode.ini:24
 msgid "Line 2"
-msgstr ""
+msgstr "Ligne 2"
 
 #: locale/fv_gcode.ini:30
 msgid "Line 3"
-msgstr ""
+msgstr "Ligne 3"
 
 #: locale/fv_gcode.ini:36
 msgid "Line 4"
-msgstr ""
+msgstr "Ligne 4"
 
 #: locale/fv_gcode.ini:42
 msgid "Line 5"
-msgstr ""
+msgstr "Ligne 5"
 
 #: locale/fv_gcode.ini:48
 msgid "Line 6"
-msgstr ""
+msgstr "Ligne 6"
 
 #: locale/fv_rect-2.ini:2 locale/fv_rect.ini:2
 msgid "Rectangle"
@@ -1011,7 +1011,7 @@ msgstr ""
 #: locale/fv_bolt-circle.ini:12 locale/fv_probe-edge.ini:12
 #: locale/fv_slot.ini:18
 msgid "<b>--- General ---</b>"
-msgstr ""
+msgstr "<b>--- Général ---</b>"
 
 #: locale/fv_rect-2.ini:24 locale/fv_rect.ini:32 locale/fv_design-cube.ini:50
 msgid "X0"
@@ -1047,11 +1047,11 @@ msgstr ""
 
 #: locale/fv_rect-2.ini:54
 msgid "Corner Style"
-msgstr ""
+msgstr "Style des coins"
 
 #: locale/fv_rect-2.ini:56 locale/fv_rect.ini:68
 msgid "Select corner style"
-msgstr ""
+msgstr "Sélectionner style"
 
 #: locale/fv_rect-2.ini:58 locale/fv_rect.ini:70
 msgid "None=0:Chamfer=1:Rounded=2:Inverted Round=3"
@@ -1059,11 +1059,11 @@ msgstr ""
 
 #: locale/fv_rect-2.ini:60
 msgid "Corner radius"
-msgstr ""
+msgstr "Rayon des coins"
 
 #: locale/fv_rect-2.ini:62 locale/fv_rect.ini:44 locale/fv_rect.ini:50
 msgid "Positive or negative value"
-msgstr ""
+msgstr "Valeur positive ou négative"
 
 #: locale/fv_rect-2.ini:66 locale/fv_slot-2.ini:54 locale/fv_ellipse.ini:60
 #: locale/fv_circle.ini:58 locale/fv_polygon.ini:54 locale/fv_oval.ini:54
@@ -1159,7 +1159,7 @@ msgstr ""
 #: locale/fv_design-cube.ini:18 locale/fv_design-cube.ini:20
 #: locale/fv_slot.ini:36
 msgid "Width"
-msgstr ""
+msgstr "Largeur"
 
 #: locale/fv_slot-2.ini:50 locale/fv_slot-arc.ini:56 locale/fv_slot.ini:38
 msgid "Width of slot"
