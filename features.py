@@ -37,6 +37,7 @@ import gettext
 ####  SETTINGS : YOU CAN CHANGE FOLLOWING LINES VALUES TO FIT YOUR NEEDS   ####
 
 DEFAULT_CATALOG = 'mill'  # or could be 'lathe'
+APP_PATH = '/home/fernand/linuxcnc-features/'
 
 # These can be changed to fit your directory structure
 # use / at the end but not the beginning
@@ -747,19 +748,42 @@ class Features(gtk.VBox):
         elif "--ini" in optlist :
             ini = optlist["--ini"]
 
-        if (ini != None):
-            try :
-                inifile = linuxcnc.ini(ini)
-                try :
-                    val = inifile.find('DISPLAY', 'PROGRAM_PREFIX') or ""
-                    if len(val) > 0 :
-                        APP_PATH = os.path.split(val)[0] + '/'
-                except :
-                    mess_dlg(_('No PROGRAM_PREFIX in LinuxCNC ini file'))
-            except:
-                mess_dlg(_('Can not read LinuxCNC ini file'))
-        else :
-            APP_PATH = os.path.dirname(__file__) + '/'
+#        if (ini is None):
+#            APP_PATH = os.path.dirname(__file__) + '/'
+#        else :
+#            try :
+#                inifile = linuxcnc.ini(ini)
+#                try :
+#                    SUBROUTINES_PATH = inifile.find('RS274NGC', 'SUBROUTINE_PATH') or ""
+#                except :
+#                     print _("Warning! There's no SUBROUTINES_PATH in ini file!")
+#
+#                 try :
+#                     PROGRAM_PREFIX = inifile.find('DISPLAY', 'PROGRAM_PREFIX') or ""
+#                     # Support relative paths based on the ini file location
+#                     if not os.path.isabs(PROGRAM_PREFIX):
+#                         APP_PATH = os.path.normpath(os.path.join(ini, PROGRAM_PREFIX))
+#                 except :
+#                     print _("Warning! There's no PROGRAM_PREFIX in ini file!")
+
+#                 try :
+#                     val = inifile.find('DISPLAY', 'PROGRAM_PREFIX') or ""
+#                     if len(val) > 0 :
+#                         APP_PATH = os.path.split(val)[0] + '/'
+#                         if APP_PATH == './':
+#                             APP_PATH = os.getcwd() + '/'
+#                         elif APP_PATH[0] == '~' :
+#                             APP_PATH = APP_PATH[1, ] + '/'
+#
+#                             full_p = os.path.abspath(val)
+#                             APP_PATH = os.path.split(val)[0] + '/'
+#
+#
+#                 except :
+#                     mess_dlg(_('No PROGRAM_PREFIX in LinuxCNC ini file'))
+#            except:
+#                mess_dlg(_('Can not read LinuxCNC ini file'))
+        print("APP_PATH =" + APP_PATH)
 
         if "--catalog" in optlist :
             self.catalog_dir = CATALOGS_DIR + optlist["--catalog"] + '/'
@@ -2434,10 +2458,13 @@ class Features(gtk.VBox):
             stat = linuxcnc.stat()
             stat.poll()
             if stat.interp_state == linuxcnc.INTERP_IDLE :
-                linuxCNC.reset_interpreter()
-                linuxCNC.mode(linuxcnc.MODE_AUTO)
-                linuxCNC.program_open(fname)
-                subprocess.call(["axis-remote", fname])
+#                linuxCNC.reset_interpreter()
+#                linuxCNC.mode(linuxcnc.MODE_AUTO)
+#                linuxCNC.program_open(fname)
+                try:
+                    subprocess.call(["axis-remote", fname])
+                except:
+                    pass
                 self.LinuxCNC_connected = True
         except :
             self.auto_refresh.set_active(False)
