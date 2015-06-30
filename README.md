@@ -88,10 +88,12 @@ Install by copying the following lines in a terminal
 	find 
 		[DISPLAY]
  		make sure DISPLAY = axis
-	add this line anywhere in the section
+	add these lines anywhere in the section
 		GLADEVCP = -U --catalog=mill features.ui
+		FEATURES_PATH = /home/fernand/linuxcnc-features
 	or
-		GLADEVCP = -U --catalog=lathe features.ui		
+		GLADEVCP = -U --catalog=lathe features.ui
+		FEATURES_PATH = /home/fernand/linuxcnc-features		
 
 	in the same section, find PROGRAM_PREFIX
 	if it does not exist, add it and give it the value
