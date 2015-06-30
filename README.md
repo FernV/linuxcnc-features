@@ -24,7 +24,7 @@ Default catalog is mill
 
 And yes, start linuxcnc in a terminal with this command :
 'linuxcnc ~/linuxcnc/configs/sim.axis/axis.ini' (not axis_mm.ini).
-You can start it before or after features.py
+It does not matter if you start it before or after features.py
 
 Open some examples and if all is well, enjoy.
 
@@ -91,7 +91,7 @@ Install by copying the following lines in a terminal
 	add this line anywhere in the section
 		GLADEVCP = -U --catalog=mill features.ui
 	or
-		GLADEVCP = -U --catalog=lathe features.ui
+		GLADEVCP = -U --catalog=lathe features.ui		
 
 	in the same section, find PROGRAM_PREFIX
 	if it does not exist, add it and give it the value
@@ -103,6 +103,9 @@ Install by copying the following lines in a terminal
 		SUBROUTINE_PATH = ./lib
 
 	features.ui is allready in ~/linuxcnc-features directory
+	
+	NOTE: I highly recommend you use ~/linuxcnc-features/ for your config directory
+	to avoid creating a structure on your own
 
 
 You should now be able to start linuxcnc and have Features vcp embedded in axis

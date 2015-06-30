@@ -36,8 +36,7 @@ import gettext
 ###############################################################################
 ####  SETTINGS : YOU CAN CHANGE FOLLOWING LINES VALUES TO FIT YOUR NEEDS   ####
 
-DEFAULT_CATALOG = 'mill'  # or could be 'lathe'
-APP_PATH = '/home/fernand/linuxcnc-features/'
+DEFAULT_CATALOG = 'lathe'  # or could be 'lathe'
 
 # These can be changed to fit your directory structure
 # use / at the end but not the beginning
@@ -150,16 +149,19 @@ def get_float(s10) :
 def search_path(f) :
     if os.path.isfile(f) :
         return f
-    src = INI_DIR + f
+    src = APP_PATH + f
     if os.path.isfile(src) :
         return src
-    src = XML_DIR + f
+    src = APP_PATH + INI_DIR + f
     if os.path.isfile(src) :
         return src
-    src = LIB_DIR + f
+    src = APP_PATH + XML_DIR + f
     if os.path.isfile(src) :
         return src
-    src = INC_DIR + f
+    src = APP_PATH + LIB_DIR + f
+    if os.path.isfile(src) :
+        return src
+    src = APP_PATH + INC_DIR + f
     if os.path.isfile(src) :
         return src
     mess_dlg(_("Can not find file %s") % f)
@@ -177,7 +179,7 @@ def get_pixbuf(icon, size) :
     s = icon.split("/")
     icon = s[-1]
     icon_id = icon + str(size)
-    icon = 'graphics/' + icon
+    icon = APP_PATH + 'graphics/' + icon
 
     if (icon_id) in PIXBUF_DICT :
         return PIXBUF_DICT[icon_id]
@@ -748,47 +750,27 @@ class Features(gtk.VBox):
         elif "--ini" in optlist :
             ini = optlist["--ini"]
 
-#        if (ini is None):
-#            APP_PATH = os.path.dirname(__file__) + '/'
-#        else :
-#            try :
-#                inifile = linuxcnc.ini(ini)
-#                try :
-#                    SUBROUTINES_PATH = inifile.find('RS274NGC', 'SUBROUTINE_PATH') or ""
-#                except :
-#                     print _("Warning! There's no SUBROUTINES_PATH in ini file!")
-#
-#                 try :
-#                     PROGRAM_PREFIX = inifile.find('DISPLAY', 'PROGRAM_PREFIX') or ""
-#                     # Support relative paths based on the ini file location
-#                     if not os.path.isabs(PROGRAM_PREFIX):
-#                         APP_PATH = os.path.normpath(os.path.join(ini, PROGRAM_PREFIX))
-#                 except :
-#                     print _("Warning! There's no PROGRAM_PREFIX in ini file!")
+        APP_PATH = os.getcwd() + '/'
+        if (ini is not None):
+            try :
+                inifile = linuxcnc.ini(ini)
+                try :
+                    val = inifile.find('DISPLAY', 'FEATURES_PATH')
+                    APP_PATH = val + '/'
+                except :
+                    print("Warning! There's no FEATURES_PATH in ini file")
 
-#                 try :
-#                     val = inifile.find('DISPLAY', 'PROGRAM_PREFIX') or ""
-#                     if len(val) > 0 :
-#                         APP_PATH = os.path.split(val)[0] + '/'
-#                         if APP_PATH == './':
-#                             APP_PATH = os.getcwd() + '/'
-#                         elif APP_PATH[0] == '~' :
-#                             APP_PATH = APP_PATH[1, ] + '/'
-#
-#                             full_p = os.path.abspath(val)
-#                             APP_PATH = os.path.split(val)[0] + '/'
-#
-#
-#                 except :
-#                     mess_dlg(_('No PROGRAM_PREFIX in LinuxCNC ini file'))
-#            except:
-#                mess_dlg(_('Can not read LinuxCNC ini file'))
-        print("APP_PATH =" + APP_PATH)
+                try :
+                    inifile.find('RS274NGC', 'SUBROUTINE_PATH')
+                except :
+                    print _("Warning! There's no SUBROUTINES_PATH in ini file!")
+            except:
+                mess_dlg(_('Can not read LinuxCNC ini file'))
 
         if "--catalog" in optlist :
-            self.catalog_dir = CATALOGS_DIR + optlist["--catalog"] + '/'
+            self.catalog_dir = APP_PATH + CATALOGS_DIR + optlist["--catalog"] + '/'
         else :
-            self.catalog_dir = CATALOGS_DIR + DEFAULT_CATALOG + '/'
+            self.catalog_dir = APP_PATH + CATALOGS_DIR + DEFAULT_CATALOG + '/'
 
         if not os.path.exists(self.catalog_dir + 'menu.xml') :
             mess_dlg(_('Catalog file does not exists : %s') % self.catalog_dir + 'menu.xml')
@@ -817,7 +799,7 @@ class Features(gtk.VBox):
 
         self.builder = gtk.Builder()
         try :
-            self.builder.add_from_file("features.glade")
+            self.builder.add_from_file(APP_PATH + "features.glade")
         except :
             mess_dlg(_("File not found : features.glade"))
             raise IOError("File not found : features.glade")
@@ -2269,7 +2251,9 @@ class Features(gtk.VBox):
     def btn_build_clicked(self, *arg) :
         self.autorefresh_call()
         if not self.LinuxCNC_connected :
-            mess_dlg(_("LinuxCNC not running\n\nStart LinuxCNC and press Build button again"))
+            mess_dlg(_("LinuxCNC not running\n\nStart LinuxCNC with the right config ini\nand press Build button again"))
+        else :
+            self.auto_refresh.set_active(True)
 
 
     def menu_save_ngc_activate(self, *arg) :
@@ -2458,9 +2442,9 @@ class Features(gtk.VBox):
             stat = linuxcnc.stat()
             stat.poll()
             if stat.interp_state == linuxcnc.INTERP_IDLE :
-#                linuxCNC.reset_interpreter()
-#                linuxCNC.mode(linuxcnc.MODE_AUTO)
-#                linuxCNC.program_open(fname)
+                linuxCNC.reset_interpreter()
+                linuxCNC.mode(linuxcnc.MODE_AUTO)
+                linuxCNC.program_open(fname)
                 try:
                     subprocess.call(["axis-remote", fname])
                 except:
@@ -2529,7 +2513,7 @@ class Features(gtk.VBox):
     def menu_new_activate(self, *args):
         self.treestore.clear()
         self.clear_undo()
-        if os.path.exists(self.catalog_dir + DEFAULT_TEMPLATE):
+        if os.path.isfile(self.catalog_dir + DEFAULT_TEMPLATE):
             xml = etree.parse(self.catalog_dir + DEFAULT_TEMPLATE)
             self.treestore_from_xml(xml.getroot())
         self.autorefresh_call()
