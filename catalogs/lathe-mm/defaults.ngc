@@ -1,5 +1,6 @@
 (   Lathe deafults )
-	G18
+	G21 (metric)
+	G18 (ZX plane)
 
 	#<_global_thread_j> = 1
 	#<_global_thread_r> = 1.7
@@ -8,7 +9,7 @@
 	#<_global_thread_e> = 2
 	#<_global_thread_l> = 3
 
-	#<_global_surface> = 40
+	#<_global_surface> = 0
 	#<_global_surface_id> = 0
 	#<_global_depth> = 10
 	#<_global_depth_step> = 1

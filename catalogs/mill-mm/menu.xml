@@ -31,16 +31,16 @@
         <sub name='Rectangular array' tool_tip='Array from a corner or center' icon="rect-array.png" src="mm/mill/fv_rectangular-array.ini"/>
     </group>
     <group name='Tools' icon="tool.png">
-        <sub name='Change Tool' tool_tip='Select and set parameters' icon="tool-change.png" src="mm/fv_tool-change.ini"/>
-        <sub name='Change Drill' tool_tip='Select and set parameters' icon="tool-params.png" src="mm/fv_drill-change.ini"/>
+        <sub name='Change Tool' tool_tip='Select and set parameters' icon="tool-change.png" src="mm/mill/fv_tool-change.ini"/>
+        <sub name='Change Drill' tool_tip='Select and set parameters' icon="tool-params.png" src="mm/mill/fv_drill-change.ini"/>
     </group>
     <group name='Probing' icon="probe.png">
-        <sub name='Set Probing Params' tool_tip='Set params before probing' icon="probe.png" src="mm/fv_set-probing-params.ini"/>
+        <sub name='Set Probing Params' tool_tip='Set params before probing' icon="probe.png" src="mm/mill/fv_set-probing-params.ini"/>
         <separator/>
-        <sub name='Probe Edges' tool_tip='Find workpiece edges' icon="probe.png" src="mm/fv_probe-edge.ini"/>
-        <sub name='Probe Hole' tool_tip='Find the center of a hole' icon="probe-hole.png" src="mm/fv_probe-hole.ini"/>
-        <sub name='Probe Cube' tool_tip='Find the center of a cube or cylinder' icon="probe.png" src="mm/fv_probe-cube.ini"/>
-        <sub name='Probe Array' tool_tip='Probe a array of place and save to file' icon="probe-down.png" src="mm/fv_probe-array.ini"/>
+        <sub name='Probe Edges' tool_tip='Find workpiece edges' icon="probe.png" src="mm/mill/fv_probe-edge.ini"/>
+        <sub name='Probe Hole' tool_tip='Find the center of a hole' icon="probe-hole.png" src="mm/mill/fv_probe-hole.ini"/>
+        <sub name='Probe Cube' tool_tip='Find the center of a cube or cylinder' icon="probe.png" src="mm/mill/fv_probe-cube.ini"/>
+        <sub name='Probe Array' tool_tip='Probe a array of place and save to file' icon="probe-down.png" src="mm/mill/fv_probe-array.ini"/>
     </group>
     <group name='Miscellaneous'>
         <sub name='Task' tool_tip='Master feature' icon="gcode.png" src="mm/fv_task.ini"/>
