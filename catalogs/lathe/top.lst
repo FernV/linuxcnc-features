@@ -1,0 +1,18 @@
+[INFO]
+warning = This file is rewritten every time a feature is added
+	and shows usage of each one
+	columns are : source, total usage, last session usage
+
+[VAR]
+topfeatures = 
+	ini/lathe/face.ini	2	0
+	ini/lathe/tool-change.ini	0	0
+	/home/fernand/linuxcnc-features/ini/lathe/tool-change.ini	2	0
+	/home/fernand/linuxcnc-features/ini/lathe/cutting-params.ini	1	0
+	/home/fernand/linuxcnc-features/ini/lathe/face.ini	8	1
+	/home/fernand/linuxcnc-features/ini/lathe/thread-adv.ini	5	0
+	ini/lathe/threading-params.ini	0	0
+	/home/fernand/linuxcnc-features/ini/lathe/threading-params.ini	3	0
+	ini/lathe/thread-adv.ini	1	0
+	ini/lathe/cutting-params.ini	0	0
+

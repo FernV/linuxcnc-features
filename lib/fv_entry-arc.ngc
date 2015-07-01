@@ -26,7 +26,7 @@ o<fv_entry-arc> sub
 		o<opt_00> endif	
 
 		o<line> CALL [#<_entry:x>] [#<_entry:y>] [#<xctr>] [#<yctr>]
-		#<rt> = [[#5410 + 0.001] / 2] (tool radius used to calc pre-entry point)
+		#<rt> = [[#5410 + 0.01] / 2] (tool radius used to calc pre-entry point)
 		
 		(compute pre-entry px,py for 1/4 circle with radius rt)
 		(and vector from start x,y to center of circle)

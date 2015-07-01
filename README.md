@@ -85,15 +85,14 @@ Install by copying the following lines in a terminal
 
 6. Open your linuxcnc ini file (follow the example in ~/linuxcnc-features/mill.ini)
 	I recommend you use ~/linuxcnc=features/mill.ini or ~/linuxcnc-features/lathe.ini
-	find 
-		[DISPLAY]
- 		make sure DISPLAY = axis
-	add these lines anywhere in the section
-		GLADEVCP = -U --catalog=mill features.ui
-		FEATURES_PATH = /home/fernand/linuxcnc-features
+	find [DISPLAY].
+ 	make sure DISPLAY = axis.
+	add these lines anywhere in the section.
+	GLADEVCP = -U --catalog=mill features.ui
+	FEATURES_PATH = /home/fernand/linuxcnc-features
 	or
-		GLADEVCP = -U --catalog=lathe features.ui
-		FEATURES_PATH = /home/fernand/linuxcnc-features		
+	GLADEVCP = -U --catalog=lathe features.ui
+	FEATURES_PATH = /home/fernand/linuxcnc-features		
 
 	in the same section, find PROGRAM_PREFIX
 	if it does not exist, add it and give it the value
