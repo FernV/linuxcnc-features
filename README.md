@@ -186,10 +186,11 @@ above path.
 	Note : you can change string, float and int types on the fly with the context menu. 
 	This is usefull with variables.
 	
-	When using a value like #<var_name> use string because if will evaluate to 0 if int used or 0.0 if float.
+	When using a value like 
+	#<var_name>
+	use string because if will evaluate to 0 if int used or 0.0 if float.
 	
 	Study examples in ini/mill/fv_circle.ini and others.
 	
 	Note : icons and images only need name.ext.
 	
---------------------------------------------------------------------------------
