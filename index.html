@@ -1,117 +1,139 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="UTF-8">
     <title>Linuxcnc-features by FernV</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
+    <section class="page-header">
+      <h1 class="project-name">Linuxcnc-features</h1>
+      <h2 class="project-tagline">LinuxCNC Features</h2>
+      <a href="https://github.com/FernV/linuxcnc-features" class="btn">View on GitHub</a>
+      <a href="https://github.com/FernV/linuxcnc-features/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/FernV/linuxcnc-features/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-      <header>
-        <h1>Linuxcnc-features</h1>
-        <p>LinuxCNC Features</p>
-      </header>
-
-      <div id="banner">
-        <span id="logo"></span>
-
-        <a href="https://github.com/FernV/linuxcnc-features" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/FernV/linuxcnc-features/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/FernV/linuxcnc-features/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
-        <p>LinuxCNC Features v2 - native realtime CAM for LinuxCNC</p>
+    <section class="main-content">
+      <p>LinuxCNC Features v2 - native realtime CAM for LinuxCNC</p>
 
 <p>Welcome to this advanced version of LinuxCNC-Features.</p>
 
-<p>It is an almost complete re-write but with a few changes to your files
- it will take full advantage of all the new features
- there is also some settings you can do in the beginning of features.py</p>
+<p>This is an almost complete re-write and you may want to copy it in a different directory
+like ~/linuxcnc/features but ~/linuxcnc-features is allright too although it will
+replace a good part of the original one.</p>
+
+<p>Few changes to your subroutines will make them take full advantage of all the new features.
+There is also some settings you can do in the beginning of features.py.</p>
 
 <h2>
-<a id="1-testing-stand-alone" class="anchor" href="#1-testing-stand-alone" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Testing Stand Alone</h2>
+<a id="1-installation" class="anchor" href="#1-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Installation</h2>
 
-<p>You are invited to test it and all you have to do is make sure you have python-lxml installed.
-To install python-lxml, simply open a terminal and copy the following command :</p>
+<ol>
+<li>
+<p>Download and extract LinuxCNC-Features in the folder of your choice</p>
+
+<p>or clone git repo "github.com/FernV/linuxcnc-features.git" into ~/  .</p>
+</li>
+<li><p>Make sure features.py is executable</p></li>
+<li>
+<p>Make sure you have python-lxml installed. If not, open a terminal and copy the following command :</p>
 
 <p>sudo apt-get install python-lxml</p>
+</li>
+</ol>
 
-<p>Download LinuxCNC-Features in the folder of your choice (recommended is ~/linuxcnc-features)</p>
+<h2>
+<a id="2-testing-stand-alone" class="anchor" href="#2-testing-stand-alone" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Testing Stand Alone</h2>
 
-<p>Make sure features.py is executable</p>
+<p>To start, open a terminal where features.py is and type : </p>
 
-<p>Open a terminal in features directory and type ./features.py
-(Or simply double click on it)
-Default catalog is mill</p>
+<pre><code>./features.py
+</code></pre>
 
-<p>And yes, start linuxcnc in a terminal with this command :
-'linuxcnc ~/linuxcnc/configs/sim.axis/axis.ini' (not axis_mm.ini).
-You can start it before or after features.py</p>
+<p>or</p>
+
+<pre><code>In your file manager, double-click on features.py
+</code></pre>
+
+<p>Default catalog is catalogs/mill. In it is menu.xml, def_template.xml and defaults.ngc</p>
+
+<p>Other catalogs are mill-mm, lathe, lathe-mm.
+The command is : ./features.py --catalog="catalog-name".</p>
+
+<p>Start linuxcnc (before or after, it does not matter) with the configuration ini you want, mill or lathe.
+Ex.: 'linuxcnc ~/linuxcnc/configs/sim.axis/axis.ini' (or axis_mm.ini).</p>
 
 <p>Open some examples and if all is well, enjoy.</p>
 
 <h2>
-<a id="2-using-embedded" class="anchor" href="#2-using-embedded" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Using Embedded</h2>
+<a id="3-installing-embedded" class="anchor" href="#3-installing-embedded" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Installing Embedded</h2>
 
 <p>Install by copying the following lines in a terminal</p>
 
 <ol>
-<li><p>Install python-lxml
-sudo apt-get install python-lxml </p></li>
+<li><p>Install python-lxml if not done yet.</p></li>
 <li>
-<p>Create links into /usr/share/pyshared/gladevcp/ 
-(change directory as required)</p>
+<p>Create links into /usr/share/pyshared/gladevcp/</p>
 
-<p>cd /usr/share/pyshared/gladevcp/
-sudo ln /home/$USER/linuxcnc-features/features.py -s
-sudo ln /home/$USER/linuxcnc-features/features.glade -s</p>
+<p>(change directory as required)</p>
+
+<p>cd /usr/share/pyshared/gladevcp/</p>
+
+<p>sudo ln /home/$USER/YOUR-INSTALLED-DIR/features.py -s</p>
+
+<p>sudo ln /home/$USER/YOUR-INSTALLED-DIR/features.glade -s</p>
 </li>
 <li>
 <p>Change hal_pythonplugin.py in /usr/share/pyshared/gladevcp/</p>
 
 <p>sudo gedit /usr/share/pyshared/gladevcp/hal_pythonplugin.py</p>
 
-<p>Add this new line anywhere
-    from features import Features</p>
+<p>Add this new line anywhere :</p>
+
+<pre><code>from features import Features
+</code></pre>
 </li>
 <li>
-<p>Change hal_python.xml in /usr/share/glade3/catalogs glade3 can be glade2</p>
+<p>Change hal_python.xml in /usr/share/glade3/catalogs ()glade3 can be glade2)</p>
 
 <p>sudo gedit /usr/share/glade3/catalogs/hal_python.xml</p>
 
-<p>Find :  
-(it is in the beginning)
-Add after:
-    
-        
-            
-            
-            
-        
-    </p>
+<p>Find (it is in the beginning):</p>
 
-<p>Find :  
-Add after :
-    </p>
+<pre><code>&lt;glade-widget-classes&gt;
+</code></pre>
+
+<p>Add after:</p>
+
+<pre><code>&lt;glade-widget-class name="Features" generic-name="features" title="features"&gt;
+
+    &lt;properties&gt;
+
+        &lt;property id="size" query="False" default="1" visible="False"/&gt;
+
+        &lt;property id="spacing" query="False" default="0" visible="False"/&gt;
+
+        &lt;property id="homogeneous" query="False" default="0" visible="False"/&gt;
+
+    &lt;/properties&gt;
+
+&lt;/glade-widget-class&gt;
+</code></pre>
+
+<p>Find :  </p>
+
+<pre><code>&lt;glade-widget-group name="python" title="HAL Python"&gt;
+</code></pre>
+
+<p>Add after :</p>
+
+<pre><code>&lt;glade-widget-class-ref name="Features"/&gt;
+</code></pre>
 
 <p>IMPORTANT NOTE : when linuxcnc updates, it recreates directories and if features do not load
 you will have to redo steps 2, 3 and 4</p>
@@ -119,105 +141,105 @@ you will have to redo steps 2, 3 and 4</p>
 <li>
 <p>Create links into /usr/lib/pymodules/python2.7/gladevcp</p>
 
-<p>cd /usr/lib/pymodules/python2.7/gladevcp
-sudo ln /usr/share/pyshared/gladevcp/features.py -s
-sudo ln /usr/share/pyshared/gladevcp/features.glade -s</p>
-</li>
-<li>
-<p>Open your linuxcnc ini file (follow the example in ~/linuxcnc-features/mill.ini)
-I recommend you use ~/linuxcnc=features/mill.ini or ~/linuxcnc-features/lathe.ini
-find 
-    [DISPLAY]
-    make sure DISPLAY = axis
-add this line anywhere in the section
-    GLADEVCP = -U --catalog=mill features.ui
-or
-    GLADEVCP = -U --catalog=lathe features.ui</p>
+<p>cd /usr/lib/pymodules/python2.7/gladevcp</p>
 
-<p>in the same section, find PROGRAM_PREFIX
-if it does not exist, add it and give it the value
-    PROGRAM_PREFIX = ./scripts</p>
+<p>sudo ln /usr/share/pyshared/gladevcp/features.py -s</p>
 
-<p>find 
-    [RS274NGC] section
-add the path to ngc sub that will be called from your ngc scripts that you load in linuxcnc
-    SUBROUTINE_PATH = ./lib</p>
-
-<p>features.ui is allready in ~/linuxcnc-features directory</p>
-</li>
-</ol>
-
-<p>You should now be able to start linuxcnc and have Features vcp embedded in axis
-THE COMMAND IS : linuxcnc /home/$USER/linuxcnc-features/mill.ini</p>
-
-<ol>
-<li>
-<p>Optional: Translations
-Translation will work in Stand Alone AND Embedded modes</p>
-
-<p>Make links in your system locale directories to translation files</p>
-
-<p>cd /usr/share/locale/&lt;&lt;&gt;&gt;/LC_MESSAGES</p>
-
-<p>sudo ln //locale/&lt;&lt;&gt;&gt;/LC_MESSAGES/linuxcnc-features.mo -s</p>
-
-<p>Example:
-cd /usr/share/locale/fr/LC_MESSAGES
-sudo ln /home/$USER/linuxcnc/features/locale/fr/LC_MESSAGES/linuxcnc-features.mo -s</p>
+<p>sudo ln /usr/share/pyshared/gladevcp/features.glade -s  </p>
 </li>
 </ol>
 
 <h2>
-<a id="3--extending-subroutines" class="anchor" href="#3--extending-subroutines" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.  Extending subroutines</h2>
+<a id="4-using-embedded" class="anchor" href="#4-using-embedded" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Using Embedded</h2>
+
+<p>Start linuxcnc with the sample ini file like :</p>
+
+<pre><code>linuxcnc ~/YOUR-INSTALLED-DIR/mill.ini
+
+or
+
+linuxcnc ~/YOUR-INSTALLED-DIR/mill-mm.ini
+</code></pre>
+
+<h2>
+<a id="5-optional-translations" class="anchor" href="#5-optional-translations" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. Optional Translations</h2>
+
+<p>Translation will work in Stand Alone AND Embedded modes</p>
+
+<pre><code>Make links in your system locale directories to translation files
+
+cd /usr/share/locale/&lt;YOUR LOCALE&gt;/LC_MESSAGES
+
+sudo ln /&lt;full path to features directory&gt;/locale/&lt;YOUR LOCALE&gt;/LC_MESSAGES/linuxcnc-features.mo -s
+</code></pre>
+
+<p>Use poedit to translate strings in linuxcnc-features.po then save and copy linuxcnc-features.mo to
+above path.</p>
+
+<h2>
+<a id="6--extending-subroutines" class="anchor" href="#6--extending-subroutines" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.  Extending subroutines</h2>
 
 <ol>
-<li><p>Param subsitutions
-"#param_name" can be used to substitude parameters from the feature. 
-"#self_id" - unique id made of feature Name + smallest integer id. </p></li>
 <li>
-<p>Eval and exec<br>
-"hello world!" 
-everything inside &lt;eval&gt; tag will be passed
-trought python's eval function. </p>
+<p>Param subsitutions
+"#param_name" can be used to substitude parameters from the feature.</p>
 
-<p>print "hello world"
-allmost the same but will take all printed data.</p>
+<p>"#self_id" - unique id made of feature Name + smallest integer id.</p>
+</li>
+<li>
+<p>Eval and exec
+"hello world!"</p>
+
+<p>everything inside  tag will be passed</p>
+
+<p>trought python's eval function.</p>
+
+<p>print "hello world"</p>
+
+<p>allmost the same but will take all printed data.</p>
 
 <p>you can use self as feature's self.</p>
 </li>
 <li>
-<p>Including Gcode
-G-code ngc files can be included by using one of the following functions:</p>
+<p>Including Gcode</p>
 
-<p>[DEFINITIONS]
-content = 
-    self.include_once("rotate-xy.ngc")
-    self.include("rotate-xy.ngc")</p>
+<p>G-code files can be included by using one of the following functions:</p>
+
+<p>[DEFINITIONS]</p>
+
+<p>content =</p>
+
+<pre><code>&lt;eval&gt;self.include_once("rotate-xy.ngc")&lt;/eval&gt;
+&lt;eval&gt;self.include("some-include-file.inc")&lt;/eval&gt;
+</code></pre>
 </li>
 <li>
-<p>Data types
-[SUBROUTINE] type should be lower case, short, without space. Ex : circle, rect, probe-dn</p>
+<p>Data types</p>
 
-<p>Params types are : string, float, int, bool (or boolean), header (or hdr), combo, items
-Note : you can change string, float and int types on the fly with the context menu. 
-This is usefull with variables</p>
+<p>[SUBROUTINE] type should be lower case, short, without space. Ex : circle, rect, probe-dn</p>
 
-<p>when using a value like # use string because if will evaluate to 0 if int used or 0.0 if float</p>
+<p>Valid params types are : string, float, int, bool (or boolean), header (or hdr), combo, items</p>
 
-<p>Examples in ini/mill/fv_circle.ini and others</p>
+<p>Note : you can change string, float and int types on the fly with the context menu. 
+This is usefull with variables.</p>
 
-<p>Note : icons and images only need name.ext</p>
+<p>When using a value like #&lt;var_name&gt; use "string" because if will evaluate to 0 if "int" used or 0.0 if "float".</p>
+
+<p>Study examples in ini/mill/fv_circle.ini and others.</p>
+
+<p>Note : icons and images only need name.ext.</p>
 </li>
 </ol>
 
-<hr>
-      </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/FernV">FernV</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/FernV/linuxcnc-features">Linuxcnc-features</a> is maintained by <a href="https://github.com/FernV">FernV</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+
+    </section>
+
+  
   </body>
 </html>
+
