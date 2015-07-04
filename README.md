@@ -74,31 +74,31 @@ Install by copying the following lines in a terminal
 	sudo gedit /usr/share/glade3/catalogs/hal_python.xml
 
 	Find (it is in the beginning):
-	&lt;glade-widget-classes&gt;
+		<glade-widget-classes>
 	
 	Add after:
 	
 		<glade-widget-class name="Features" generic-name="features" title="features">
 		
-		    &lt;properties&gt;
+		    <properties>
 		    
-		        &lt;property id="size" query="False" default="1" visible="False"/&gt;
+		        <property id="size" query="False" default="1" visible="False"/>
 		        
-		        &lt;property id="spacing" query="False" default="0" visible="False"/&gt;
+		        <property id="spacing" query="False" default="0" visible="False"/>
 		        
-		        &lt;property id="homogeneous" query="False" default="0" visible="False"/&gt;
+		        <property id="homogeneous" query="False" default="0" visible="False"/>
 		        
-		    &lt;/properties&gt;
+		    </properties>
 		    
-		&lt;/glade-widget-class&gt;
+		</glade-widget-class>
 		
 
 	Find :  
-	&lt;glade-widget-group name="python" title="HAL Python"&gt;
+		<glade-widget-group name="python" title="HAL Python">
 	
 	Add after :
 	
-		&lt;glade-widget-class-ref name="Features"/&gt;
+		<glade-widget-class-ref name="Features"/>
 		
 
 	IMPORTANT NOTE : when linuxcnc updates, it recreates directories and if features do not load
@@ -131,9 +131,9 @@ Translation will work in Stand Alone AND Embedded modes
 
 	Make links in your system locale directories to translation files
 	
-	cd /usr/share/locale/&lt;YOUR LOCALE&gt;/LC_MESSAGES
+	cd /usr/share/locale/<YOUR LOCALE>/LC_MESSAGES
 	
-	sudo ln /&lt;full path to features directory&gt;/locale/&lt;YOUR LOCALE&gt;/LC_MESSAGES/linuxcnc-features.mo -s
+	sudo ln /<full path to features directory>/locale/<YOUR LOCALE>/LC_MESSAGES/linuxcnc-features.mo -s
 
 Use poedit to translate strings in linuxcnc-features.po then save and copy linuxcnc-features.mo to
 above path.
@@ -149,14 +149,14 @@ above path.
 	
 
 2. Eval and exec
-	&lt;eval&gt;"hello world!"&lt;/eval&gt;
+	<eval>"hello world!"</eval>
 	
-	everything inside &lt;eval&gt; tag will be passed
+	everything inside <eval> tag will be passed
 	
 	trought python's eval function.
 	
 	
-	&lt;exec&gt;print "hello world"&lt;/exec&gt;
+	<exec>print "hello world"</exec>
 	
 	allmost the same but will take all printed data.
 	
@@ -171,8 +171,8 @@ above path.
 	
 	content =
 	
-		&lt;eval&gt;self.include_once("rotate-xy.ngc")&lt;/eval&gt;
-		&lt;eval&gt;self.include("some-include-file.inc")&lt;/eval&gt;
+		<eval>self.include_once("rotate-xy.ngc")</eval>
+		<eval>self.include("some-include-file.inc")</eval>
 
 
 4. Data types
@@ -184,7 +184,7 @@ above path.
 	Note : you can change string, float and int types on the fly with the context menu. 
 	This is usefull with variables.
 	
-	When using a value like #&lt;var_name> use string because if will evaluate to 0 if int used or 0.0 if float.
+	When using a value like #<var_name> use string because if will evaluate to 0 if int used or 0.0 if float.
 	
 	Study examples in ini/mill/fv_circle.ini and others.
 	
