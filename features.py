@@ -115,7 +115,7 @@ PREFERENCES_FILE = "pref.ini"
 TOP_FEATURES = "top.lst"
 DEFAULTS = 'defaults.ngc'
 
-HOME_PAGE = 'https://www.mercedes-benz.com/en/'
+HOME_PAGE = 'http://fernv.github.io/linuxcnc-features/'
 
 SEL_IS_NONE = 0
 SEL_IS_FEATURE = 1
@@ -1067,13 +1067,6 @@ class Features(gtk.VBox):
         menu_cnc_russia.connect("activate", self.menu_html_RU_activate)
         menu_help.append(menu_cnc_russia)
 
-        menu_git_hub = gtk.ImageMenuItem(_('Get Latest Version'))
-        img = gtk.Image()
-        img.set_from_stock('gtk-help', GTK_ICON_SIZE)
-        menu_git_hub.set_image(img)
-        menu_git_hub.connect("activate", self.menu_html_git_activate)
-        menu_help.append(menu_git_hub)
-
         sep = gtk.SeparatorMenuItem()
         menu_help.append(sep)
 
@@ -1096,9 +1089,6 @@ class Features(gtk.VBox):
     def menu_util_activate(self, *args):
         self.menu_edit_feature.set_sensitive(self.selected_feature is not None)
         self.menu_reload_feature.set_sensitive(self.selected_feature is not None)
-
-    def menu_html_git_activate(self, *args):
-        webbrowser.open('https://github.com/cnc-club/linuxcnc-features/tree/master')
 
     def menu_html_gen_activate(self, *args):
         webbrowser.open(HOME_PAGE)
