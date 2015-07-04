@@ -78,7 +78,7 @@ Install by copying the following lines in a terminal
 	
 	Add after:
 	
-		&lt;glade-widget-class name="Features" generic-name="features" title="features"&gt;
+		<glade-widget-class name="Features" generic-name="features" title="features">
 		
 		    &lt;properties&gt;
 		    
