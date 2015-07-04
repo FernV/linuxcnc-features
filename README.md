@@ -74,6 +74,7 @@ Install by copying the following lines in a terminal
 	sudo gedit /usr/share/glade3/catalogs/hal_python.xml
 
 	Find (it is in the beginning):
+	
 		<glade-widget-classes>
 	
 	Add after:
@@ -94,6 +95,7 @@ Install by copying the following lines in a terminal
 		
 
 	Find :  
+	
 		<glade-widget-group name="python" title="HAL Python">
 	
 	Add after :
