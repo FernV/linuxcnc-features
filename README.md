@@ -13,6 +13,8 @@ There is also some settings you can do in the beginning of features.py.
 --------------------------------------------------------------------------------
 1. Download and extract LinuxCNC-Features in the folder of your choice
 
+	or clone git repo "github.com/FernV/linuxcnc-features.git" into ~/  .
+
 2. Make sure features.py is executable
 
 3. Make sure you have python-lxml installed. If not, open a terminal and copy the following command :
@@ -75,17 +77,29 @@ Install by copying the following lines in a terminal
 	&lt;glade-widget-classes&gt;
 	
 	Add after:
+	
 		&lt;glade-widget-class name="Features" generic-name="features" title="features"&gt;
+		
 		    &lt;properties&gt;
+		    
 		        &lt;property id="size" query="False" default="1" visible="False"/&gt;
+		        
 		        &lt;property id="spacing" query="False" default="0" visible="False"/&gt;
+		        
 		        &lt;property id="homogeneous" query="False" default="0" visible="False"/&gt;
+		        
 		    &lt;/properties&gt;
+		    
 		&lt;/glade-widget-class&gt;
+		
 
-	Find :  &lt;glade-widget-group name="python" title="HAL Python"&gt;
+	Find :  
+	&lt;glade-widget-group name="python" title="HAL Python"&gt;
+	
 	Add after :
+	
 		&lt;glade-widget-class-ref name="Features"/&gt;
+		
 
 	IMPORTANT NOTE : when linuxcnc updates, it recreates directories and if features do not load
 	you will have to redo steps 2, 3 and 4
