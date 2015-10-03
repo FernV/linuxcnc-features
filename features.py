@@ -1478,10 +1478,11 @@ class Features(gtk.VBox):
             if f.find('Not Found') > -1 :
                 mess_dlg(_('No new version information'))
                 return
+            f = re.sub(r"\n", "", f)
+            if f == APP_VERSION :
+                mess_dlg(_('You have the latest version : %s') % f)
+                return
             if (f > APP_VERSION) :
-                if f == self.checked_update :
-                    mess_dlg(_('You have the latest version : %s') % f)
-                    return
                 mess_dlg('New update available : %s\nCurrent version : %s' % (f, APP_VERSION))
                 webbrowser.open(HOME_PAGE)
                 self.checked_update = f
@@ -3441,12 +3442,12 @@ class Features(gtk.VBox):
         self.tv_w_adj.value = read_float(config, 'features_tv_width', 175)
         self.checked_update = read_str('general', 'chk_version', '2.0')
 
-        try :
-        	v = config.get('version', '2.0')
-	        if v < APP_VERSION :
-	            self.save_preferences()
-        except :
-            self.save_preferences()
+#        try :
+#        	v = config.get('version', '2.0')#
+# 	        if v < APP_VERSION :
+# 	            self.save_preferences()
+#        except :
+#            self.save_preferences()
 
     def on_scale_change_value(self, widget):
         self.main_box.set_size_request(int(self.w_adj.value), 100)
