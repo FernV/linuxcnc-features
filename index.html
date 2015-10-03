@@ -39,15 +39,13 @@
         <ul></ul>
       </nav>
       <section>
-        <p>LinuxCNC Features v2 - native realtime CAM for LinuxCNC</p>
+        <p>LinuxCNC Features v2.01 - native realtime CAM for LinuxCNC</p>
 
-<p>Welcome to this advanced version of LinuxCNC-Features.</p>
+<p>Welcome to this update version of LinuxCNC-Features.</p>
 
-<p>This is an almost complete re-write and you may want to copy it in a different directory
-like ~/linuxcnc/features but ~/linuxcnc-features is allright too although it will
-replace a good part of the original one.</p>
+<p>Changes are described in the CHANGES file.</p>
 
-<p>Few changes to your subroutines will make them take full advantage of all the new features.
+<p>Some changes to your subroutines will make them take full advantage of all the new features.
 There is also some settings you can do in the beginning of features.py.</p>
 
 <h2>
@@ -59,7 +57,6 @@ There is also some settings you can do in the beginning of features.py.</p>
 
 <p>or clone git repo "github.com/FernV/linuxcnc-features.git" into ~/  .</p>
 </li>
-<li><p>Make sure features.py is executable</p></li>
 <li>
 <p>Make sure you have python-lxml installed. If not, open a terminal and copy the following command :</p>
 
@@ -80,124 +77,50 @@ There is also some settings you can do in the beginning of features.py.</p>
 <pre><code>In your file manager, double-click on features.py
 </code></pre>
 
-<p>Default catalog is catalogs/mill. In it is menu.xml, def_template.xml and defaults.ngc</p>
+<p>Default catalog is mill. In it's directory are menu.xml, def_template.xml and defaults.ngc</p>
 
-<p>Other catalogs are mill-mm, lathe, lathe-mm.
-The command is : ./features.py --catalog="catalog-name".</p>
+<p>Other supplied catalog is lathe (not much done yet)</p>
 
-<p>Start linuxcnc (before or after, it does not matter) with the configuration ini you want, mill or lathe.
-Ex.: 'linuxcnc ~/linuxcnc/configs/sim.axis/axis.ini' (or axis_mm.ini).</p>
+<p>The command is : ./features.py --catalog=lathe</p>
 
-<p>Open some examples and if all is well, enjoy.</p>
+<p>Open some examples files and enjoy.</p>
 
 <h2>
 <a id="3-installing-embedded" class="anchor" href="#3-installing-embedded" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Installing Embedded</h2>
 
-<p>Install by copying the following lines in a terminal</p>
+<p>Installing has been simplified with the use of 'setup' script</p>
 
-<ol>
-<li><p>Install python-lxml if not done yet.</p></li>
-<li>
-<p>Create links into /usr/share/pyshared/gladevcp/</p>
+<p>First install python-lxml if not done yet. Required for setup and Features.</p>
 
-<p>(change directory as required)</p>
+<p>Simply type ./setup in a terminal</p>
 
-<p>cd /usr/share/pyshared/gladevcp/</p>
+<p>If you want to remove LinuxCNC-Features, use './setup c'</p>
 
-<p>sudo ln /home/$USER/YOUR-INSTALLED-DIR/features.py -s</p>
-
-<p>sudo ln /home/$USER/YOUR-INSTALLED-DIR/features.glade -s</p>
-</li>
-<li>
-<p>Change hal_pythonplugin.py in /usr/share/pyshared/gladevcp/</p>
-
-<p>sudo gedit /usr/share/pyshared/gladevcp/hal_pythonplugin.py</p>
-
-<p>Add this new line anywhere :</p>
-
-<pre><code>from features import Features
-</code></pre>
-</li>
-<li>
-<p>Change hal_python.xml in /usr/share/glade3/catalogs ()glade3 can be glade2)</p>
-
-<p>sudo gedit /usr/share/glade3/catalogs/hal_python.xml</p>
-
-<p>Find (it is in the beginning):</p>
-
-<pre><code>&lt;glade-widget-classes&gt;
-</code></pre>
-
-<p>Add after:</p>
-
-<pre><code>&lt;glade-widget-class name="Features" generic-name="features" title="features"&gt;
-
-    &lt;properties&gt;
-
-        &lt;property id="size" query="False" default="1" visible="False"/&gt;
-
-        &lt;property id="spacing" query="False" default="0" visible="False"/&gt;
-
-        &lt;property id="homogeneous" query="False" default="0" visible="False"/&gt;
-
-    &lt;/properties&gt;
-
-&lt;/glade-widget-class&gt;
-</code></pre>
-
-<p>Find :  </p>
-
-<pre><code>&lt;glade-widget-group name="python" title="HAL Python"&gt;
-</code></pre>
-
-<p>Add after :</p>
-
-<pre><code>&lt;glade-widget-class-ref name="Features"/&gt;
-</code></pre>
-
-<p>IMPORTANT NOTE : when linuxcnc updates, it recreates directories and if features do not load
-you will have to redo steps 2, 3 and 4</p>
-</li>
-<li>
-<p>Create links into /usr/lib/pymodules/python2.7/gladevcp</p>
-
-<p>cd /usr/lib/pymodules/python2.7/gladevcp</p>
-
-<p>sudo ln /usr/share/pyshared/gladevcp/features.py -s</p>
-
-<p>sudo ln /usr/share/pyshared/gladevcp/features.glade -s  </p>
-</li>
-</ol>
+<p>IMPORTANT NOTE : when linuxcnc updates, it changes some files to what they were before.
+Just do ./setup again</p>
 
 <h2>
 <a id="4-using-embedded" class="anchor" href="#4-using-embedded" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Using Embedded</h2>
 
-<p>Start linuxcnc with the sample ini file like :</p>
+<p>Change to ./linuxcnc-configs/axis or ./linuxcnc-configs/gmoccapy</p>
 
-<pre><code>linuxcnc ~/YOUR-INSTALLED-DIR/mill.ini
-
-or
-
-linuxcnc ~/YOUR-INSTALLED-DIR/mill-mm.ini
-</code></pre>
+<p>Start linuxcnc with one of the ini files available</p>
 
 <h2>
 <a id="5-optional-translations" class="anchor" href="#5-optional-translations" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. Optional Translations</h2>
 
-<p>Translation will work in Stand Alone AND Embedded modes</p>
-
-<pre><code>Make links in your system locale directories to translation files
-
-cd /usr/share/locale/&lt;YOUR LOCALE&gt;/LC_MESSAGES
-
-sudo ln /&lt;full path to features directory&gt;/locale/&lt;YOUR LOCALE&gt;/LC_MESSAGES/linuxcnc-features.mo -s
-</code></pre>
-
-<p>Use poedit to translate strings in linuxcnc-features.po then save and copy linuxcnc-features.mo to
-above path.</p>
+<p>Translation files are not included in the release. Will be in future release.</p>
 
 <h2>
-<a id="6--extending-subroutines" class="anchor" href="#6--extending-subroutines" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.  Extending subroutines</h2>
+<a id="6-configuring" class="anchor" href="#6-configuring" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. Configuring</h2>
+
+<p>In the beginning of features.py are some values you can set to suit your taste</p>
+
+<p>After features has started, select Utilities-&gt;Preferences and set your default values.
+Click OK to save.</p>
+
+<h2>
+<a id="7-extending-subroutines" class="anchor" href="#7-extending-subroutines" aria-hidden="true"><span class="octicon octicon-link"></span></a>7. Extending subroutines</h2>
 
 <ol>
 <li>
@@ -238,18 +161,21 @@ above path.</p>
 
 <p>[SUBROUTINE] type should be lower case, short, without space. Ex : circle, rect, probe-dn</p>
 
-<p>Valid params types are : string, float, int, bool (or boolean), header (or hdr), combo, items</p>
+<p>Valid params types are : string, float, int, bool (or boolean), header, sub-header, combo, items, filename</p>
 
-<p>Note : you can change string, float and int types on the fly with the context menu. 
-This is usefull with variables.</p>
+<p>Note : you can change string, float and int types on the fly with the context menu. Usefull with variables.</p>
 
 <p>When using a value like #&lt;var_name&gt; use "string" because if will evaluate to 0 if "int" used or 0.0 if "float".</p>
 
-<p>Study examples in ini/mill/fv_circle.ini and others.</p>
-
-<p>Note : icons and images only need name.ext.</p>
+<p>Study files in ini directory</p>
 </li>
 </ol>
+
+<h2>
+<a id="8-notes" class="anchor" href="#8-notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>8. Notes</h2>
+
+<p>Polyline is not fully implemented yet, not recommend to use now, but please evaluate.
+Future development will concentrate more on ini and ngc files.</p>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/FernV">FernV</a></p>
