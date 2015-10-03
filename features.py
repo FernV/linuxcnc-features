@@ -98,7 +98,7 @@ import urllib
 
 # About Dialog strings
 APP_TITLE = "LinuxCNC-Features"
-APP_VERSION = "2.0"
+APP_VERSION = "2.01"
 APP_COPYRIGHT = 'Copyright © 2012 Nick Drobchenko aka Nick from cnc-club.ru'
 APP_AUTHORS = ['Nick Drobchenko', 'Meison Kim', 'Alexander Wigen',
                'Konstantin Navrockiy', 'Fernand Veilleux', 'Mit Zot']
