@@ -98,7 +98,7 @@ import urllib
 
 # About Dialog strings
 APP_TITLE = "LinuxCNC-Features"
-APP_VERSION = "2.01"
+APP_VERSION = "2.0"
 APP_COPYRIGHT = 'Copyright © 2012 Nick Drobchenko aka Nick from cnc-club.ru'
 APP_AUTHORS = ['Nick Drobchenko', 'Meison Kim', 'Alexander Wigen',
                'Konstantin Navrockiy', 'Fernand Veilleux', 'Mit Zot']
@@ -259,6 +259,7 @@ def mess_dlg(mess):
         flags = gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
         type = gtk.MESSAGE_WARNING,
         buttons = gtk.BUTTONS_OK, message_format = '%s' % mess)
+    dlg.set_title('LinuxCNC-Features')
     dlg.set_keep_above(True)
     dlg.run()
     dlg.destroy()
@@ -1265,8 +1266,8 @@ class Features(gtk.VBox):
             f = opener.open("https://raw.github.com/FernV/linuxcnc-features/master/version").read()
             if f.find('Not Found') > -1 :
                 return
-            if (f > APP_VERSION) and (f == self.checked_update) :
-                mess_dlg('New update available : %s,\nCurrent version : %s' % (f, APP_VERSION))
+            if (f > APP_VERSION) and (f > self.checked_update) :
+                mess_dlg('New update available : %s\nCurrent version : %s' % (f, APP_VERSION))
                 webbrowser.open(HOME_PAGE)
                 self.checked_update = f
                 self.save_preferences()
@@ -1388,9 +1389,6 @@ class Features(gtk.VBox):
         mi.set_size_request(-1, ADD_MENU_ICON_SIZE)
         v_menu.append(mi)
 
-#        v_menu.append(self.create_mi(self.actionSaveLayout))
-
-
         self.menuAdd = gtk.Menu()
         add_menu = gtk.MenuItem(_('_Add'))
         add_menu.set_submenu(self.menuAdd)
@@ -1483,7 +1481,7 @@ class Features(gtk.VBox):
                 if f == self.checked_update :
                     mess_dlg(_('You have the latest version : %s') % f)
                     return
-                mess_dlg('New update available : %s,\nCurrent version : %s' % (f, APP_VERSION))
+                mess_dlg('New update available : %s\nCurrent version : %s' % (f, APP_VERSION))
                 webbrowser.open(HOME_PAGE)
                 self.checked_update = f
                 self.save_preferences()

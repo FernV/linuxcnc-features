@@ -1,5 +1,5 @@
-(Metric not detected, using inch)
-G20
+(Metric detected)
+G21
 
 ( Mill defaults )
 
@@ -115,63 +115,9 @@ S#<_spindle_rpm>
         
 ( end mill defaults )
 
+
 (Definitions)
-
-
-
-
 (End definitions)
-
-	(Polyline)
-	o<poly-001-enabled> if [1]
-		#<_polyline-index-no> = -1
-		#<_polyline-cut-dir> = 1 (#param_dir)
-		#<_polyline-comp> = 40 (#param_comp)
-		#<_polyline-limit-radius> = 1
-		#51 = [0.000]
-		#52 = [0.000]
-
-		(Initial line)
-		o<fv_polyline-add> CALL [1.000] [-1.000] [0] [0] [0.300] [0]
-
-		(added items follow)
-		(Line To absolute or relative position)
-		o<line-001> if [1]
-			o<fv_polyline-add> CALL [1.000] [1.000] [0] [0] [0.300] [0]
-		o<line-001> endif
-
-
-		(Line To relative polar position)
-		o<linepolar-001> if [[1] AND [2.000 GT 0.0]]
-			o<linepolar-001-abs> if [1]
-				#<angle> = 60.000
-			o<linepolar-001-abs> else
-				#<angle> = [60.000 + #[61 + [14 * #<_polyline-index-no>]]]
-			o<linepolar-001-abs> endif
-
-			o<fv_polyline-add> CALL [2.000 * COS[#<angle>]] [2.000 * SIN[#<angle>]] [0] [0] [0.300] [0]
-		o<linepolar-001> endif
-
-
-		(Compound corner)
-		o<composite-001> if [1]
-			o<fv_polyline-comp> CALL [1.000] [1.000] [0] [0] [0.300] [0] [3] [0.500] [0] [1.000] [-1.000] [0] [0.200] [0.300]
-		o<composite-001> endif
-
-
-		(end items added)
-
-		o<poly-001-close> if [0 AND #<_polyline-index-no>]
-			(Closing polyline)
-			o<fv_polyline-add> CALL [0.000] [0.000] [-1] [0] [0.300] [0] [0]
-		o<poly-001-close> else
-			#53 = 0
-		o<poly-001-close> endif
-
-		o<fv_polyline-cut> CALL [#<_surface>] [#<_depth>] [40] [1] [1] [0 AND #<_polyline-index-no>]
-
-	o<poly-001-enabled> endif
-	(end Polyline)
 
 
 M2
