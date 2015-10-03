@@ -98,7 +98,7 @@ import urllib
 
 # About Dialog strings
 APP_TITLE = "LinuxCNC-Features"
-APP_VERSION = "2.0"
+APP_VERSION = "2.01"
 APP_COPYRIGHT = 'Copyright © 2012 Nick Drobchenko aka Nick from cnc-club.ru'
 APP_AUTHORS = ['Nick Drobchenko', 'Meison Kim', 'Alexander Wigen',
                'Konstantin Navrockiy', 'Fernand Veilleux', 'Mit Zot']
@@ -1266,6 +1266,7 @@ class Features(gtk.VBox):
             f = opener.open("https://raw.github.com/FernV/linuxcnc-features/master/version").read()
             if f.find('Not Found') > -1 :
                 return
+            f = re.sub(r"\n", "", f)
             if (f > APP_VERSION) and (f > self.checked_update) :
                 mess_dlg('New update available : %s\nCurrent version : %s' % (f, APP_VERSION))
                 webbrowser.open(HOME_PAGE)
