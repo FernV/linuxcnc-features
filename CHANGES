@@ -1,0 +1,20 @@
+2.01 Changes 2015 October
+
+setup script
+auto detection of units, same files do for metric and inch
+virtual numeric keyboard for int and float input
+add iconview not in a dialog anymore, one click only to select
+updated menu
+more shortcuts/accelerators (click Edit menu to see)
+better integration with gmoccapy and a touchscreen
+better grouping
+new datatype supported : filename
+supports Cut/Copy/Paste (groups too)
+auto-check for updates
+...and more
+
+ini files added
+D-Sub connectors
+TrueType and QCad (cxf) fonts
+Counterbore
+Polyline (replaces Draw)

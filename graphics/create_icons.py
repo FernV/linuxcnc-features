@@ -34,11 +34,13 @@ optlist, args = getopt.getopt(sys.argv[1:], 'w:r')
 optlist = dict(optlist)
 renew_all = "-r" in optlist
 
+out_dir = "images/"
+
 xml = etree.parse("icons.svg")
 for x in xml.findall(".//{http://www.w3.org/2000/svg}title") :
 	try :
 		id_ = x.getparent().get("id")
-		if not os.path.isfile("%s.png" % (x.text)) or renew_all :
+		if not os.path.isfile("%s%s.png" % (out_dir,x.text)) or renew_all :
 			w = float(os.popen("inkscape icons.svg --query-id=%s --query-width " % id_).read())
 			h = float(os.popen("inkscape icons.svg --query-id=%s --query-height" % id_).read())
 
@@ -47,7 +49,7 @@ for x in xml.findall(".//{http://www.w3.org/2000/svg}title") :
 			else :
 				h, w = 120, 120 * w / h
 			try :
-				s = "inkscape icons.svg --export-png=%s.png --export-id-only --export-id=%s --export-area-snap --export-width=%spx --export-height=%spx " % (x.text, id_, w, h)
+				s = "inkscape icons.svg --export-png=%s%s.png --export-id-only --export-id=%s --export-area-snap --export-width=%spx --export-height=%spx " % (out_dir,x.text, id_, w, h)
 				print os.popen(s).read()
 				print "Created %s" % x.text
 			except Exception, e :

@@ -1,0 +1,59 @@
+#!/bin/bash
+
+#sudo apt-get install python-lxml
+
+curdir=`pwd`
+
+if [ $# -eq 1 ] && [ $1 = 'c' ]
+	then	
+		cl=$1
+	else
+		cl="i"
+	fi
+	
+features_path=/usr/local/bin/features
+if [ -L $features_path ]
+then
+	sudo rm $features_path
+fi
+if [ $cl = "i" ]
+	then sudo ln $curdir $features_path -s
+fi
+
+glade=/usr/share/pyshared/gladevcp/features.glade
+if [ -L $glade ]
+then
+	sudo rm $glade
+fi
+if [ $cl = 'i' ]
+	then sudo ln $curdir/features.glade /usr/share/pyshared/gladevcp/ -s
+fi
+
+features=/usr/share/pyshared/gladevcp/features.py
+if [ -L $features ]
+then
+	sudo rm $features
+fi
+if [ $cl = "i" ]
+	then sudo ln $curdir/features.py /usr/share/pyshared/gladevcp/ -s
+fi
+
+glade=/usr/lib/pymodules/python2.7/gladevcp/features.glade
+if [ -L $glade ]
+then
+	sudo rm $glade
+fi
+if [ $cl = 'i' ]
+	then sudo ln $curdir/features.glade /usr/lib/pymodules/python2.7/gladevcp/ -s
+fi
+
+features=/usr/lib/pymodules/python2.7/gladevcp/features.py
+if [ -L $features ]
+then
+	sudo rm $features
+fi
+if [ $cl = 'i' ]
+	then sudo ln $curdir/features.py /usr/lib/pymodules/python2.7/gladevcp/ -s
+fi
+
+sudo python $curdir/support/py/edit_hal.py $1
