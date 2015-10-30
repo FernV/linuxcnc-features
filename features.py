@@ -2452,7 +2452,7 @@ class Features(gtk.VBox):
         (model, itr) = self.treeview.get_selection().get_selected()
         self.actionCollapse.set_sensitive(itr is not None)
         if itr :
-#            tree_path = model.get_path(itr)
+            tree_path = model.get_path(itr)
             ts_itr = model.convert_iter_to_child_iter(itr)
             self.selected_type = model.get_value(itr, 0).attr.get("type")
             if self.selected_type == "items" :
@@ -2529,7 +2529,7 @@ class Features(gtk.VBox):
             self.can_remove_from_group = False
             n_children = model.iter_n_children(None)
             self.items_lpath = (n_children,)
-#            tree_path = None
+            tree_path = None
 
 
         self.can_delete_duplicate = (self.iter_selected_type == SEL_IS_FEATURE)
@@ -2554,8 +2554,8 @@ class Features(gtk.VBox):
                     a_filter = self.treestore.filter_new(self.feature_ts_path)
                 a_filter.set_visible_column(3)
                 self.details_filter = a_filter
-                if not self.sub_hdrs_in_tv1 :
-                    self.treeview.expand_all()
+                if tree_path is not None and not self.sub_hdrs_in_tv1 :
+                    self.treeview.expand_row(tree_path, False)
 
                 if self.use_widget_box :
                     self.create_widget_box()
