@@ -14,7 +14,7 @@ o<fv_entry-angle> sub
 	G0 Z#<_z_clear>
 	G40
 
-	o<comp00> if [#<opt> EQ 2] (no compensation)
+	o<comp00> if [[#<opt> EQ 2] OR [#5410 EQ 0]] (no compensation)
 		G0 X#<x1> Y#<y1>
 		#<_final:x> = #<x1>
 		#<_final:y> = #<y1>
@@ -33,7 +33,7 @@ o<fv_entry-angle> sub
 		o<dot> call [#<xprior>] [#<yprior>] [#<x1>] [#<y1>] [#<xto>] [#<yto>]
 			#<ang312> = #<_dot:ang>
 				 
-		#<tool_radius> = [[#5410 + .01] / 2]
+		#<tool_radius> = [#5410 * 0.501]
 
 		o<in_out> if [#<opt> EQ 0] (inside)
 			#<elen12> = [#<tool_radius> / [TAN[#<ang312> / 2]]]
