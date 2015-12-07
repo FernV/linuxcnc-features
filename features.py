@@ -130,7 +130,7 @@ CATALOGS_DIR = '/catalogs/'
 TEMPLATES_DIR = '/xml/templates/'
 GRAPHICS_DIR = '/graphics/images/'
 
-DEFAULT_TEMPLATE = "def_template.xml"
+DEFAULT_TEMPLATE = "/def_template.xml"
 
 SUPPORTED_DATA_TYPES = ['sub-header', 'header', 'bool', 'boolean', 'int',
                         'float', 'string', 'combo', 'items', 'filename']
@@ -1249,7 +1249,7 @@ class Features(gtk.VBox):
         self.actionSideBySide.set_active(self.side_by_side)
         self.actionSubHdrs.set_active(self.sub_hdrs_in_tv1)
 
-        self.menu_new_activate(self)
+        self.menu_new_activate(self, 1)
         self.get_selected_feature(self)
         self.show_all()
         self.addVBox.hide()
@@ -1258,7 +1258,7 @@ class Features(gtk.VBox):
         self.set_layout()
         self.treeview.grab_focus()
         self.clipboard = gtk.clipboard_get(gtk.gdk.SELECTION_CLIPBOARD)
-        self.update_timeout = gobject.timeout_add(8000, self.update_check_call)
+#        self.update_timeout = gobject.timeout_add(8000, self.update_check_call)
 
     def update_check_call(self):
         opener = urllib.FancyURLopener({})
@@ -1892,6 +1892,15 @@ class Features(gtk.VBox):
 #            model.append([data])
 #        if context.action == gtk.gdk.ACTION_MOVE:
 #            context.finish(True, True, etime)
+
+    def save_work(self, *args):
+        fname = self.catalog_dir + '/current_work.xml'
+        if self.treestore.get_iter_root() is not None :
+            xml = self.treestore_to_xml()
+            etree.ElementTree(xml).write(fname, pretty_print = True)
+        else :
+            if os.path.exists(fname) :
+                os.remove(fname)
 
     def pop_menu(self, tv, event):
         if event.button == 3:
@@ -3257,7 +3266,11 @@ class Features(gtk.VBox):
     def menu_new_activate(self, *args):
         self.treestore.clear()
         self.clear_undo()
-        if os.path.isfile(self.catalog_dir + DEFAULT_TEMPLATE):
+        if (args.__len__() == 2) and os.path.isfile(self.catalog_dir + '/current_work.xml'):
+            xml = etree.parse(self.catalog_dir + '/current_work.xml')
+            self.treestore_from_xml(xml.getroot())
+            self.expand_and_select((0,))
+        elif os.path.isfile(self.catalog_dir + DEFAULT_TEMPLATE):
             xml = etree.parse(self.catalog_dir + DEFAULT_TEMPLATE)
             self.treestore_from_xml(xml.getroot())
             self.expand_and_select((0,))
