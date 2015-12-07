@@ -1085,7 +1085,7 @@ class Features(gtk.VBox):
     __gproperties = __gproperties__
 
     def __init__(self, *a, **kw):
-        global APP_PATH, DEFAULT_CATALOG, DEFAULT_METRIC
+        global APP_PATH, DEFAULT_CATALOG, DEFAULT_METRIC, NGC_DIR
 
         # process passed args
         opt, optl = 'U:c:x:i:t', ["catalog=", "ini="]
@@ -1121,10 +1121,9 @@ class Features(gtk.VBox):
 
                 try :
                     val = inifile.find('DISPLAY', 'PROGRAM_PREFIX')
+                    NGC_DIR = os.path.abspath(val.rstrip('/')) + '/'
                 except :
                     print(NO_PROGRAM_PREFIX_MSG)
-                    mess_dlg(NO_PROGRAM_PREFIX_MSG)
-                    sys.exit(1)
 
                 try :
                     inifile.find('RS274NGC', 'SUBROUTINE_PATH')
@@ -1145,6 +1144,7 @@ class Features(gtk.VBox):
 
         else :
             APP_PATH = os.path.abspath(os.path.dirname(__file__))
+            NGC_DIR = APP_PATH + NGC_DIR
 
         if "--catalog" in optlist :
             self.catalog_dir = APP_PATH + CATALOGS_DIR + optlist["--catalog"]
@@ -2990,7 +2990,7 @@ class Features(gtk.VBox):
             filt.add_mime_type("text/ngc")
             filt.add_pattern("*.ngc")
             filechooserdialog.add_filter(filt)
-            filechooserdialog.set_current_folder(APP_PATH + NGC_DIR)
+            filechooserdialog.set_current_folder(APP_PATH + '/scripts/')
 
             response = filechooserdialog.run()
             if response == gtk.RESPONSE_OK:
@@ -3174,7 +3174,7 @@ class Features(gtk.VBox):
         self.import_xml(xml)
 
     def autorefresh_call(self) :
-        fname = APP_PATH + NGC_DIR + "features.ngc"
+        fname = NGC_DIR + "features.ngc"
         f = open(fname, "w")
         f.write(self.to_gcode())
         f.close()
