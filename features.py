@@ -95,6 +95,11 @@ import gettext
 import time
 import urllib
 
+import locale
+locale.setlocale(locale.LC_NUMERIC, '')
+localeDICT = {}
+localeDICT = locale.localeconv()
+decimal_point = localeDICT['decimal_point']
 
 # About Dialog strings
 APP_TITLE = "LinuxCNC-Features"
@@ -361,7 +366,7 @@ class CellRendererMx(gtk.CellRendererText):
 
         if self.data_type == 'float' :
             tbl.attach(btn, 0, 1, 4, 5)
-            btn = gtk.Button(label = '.')
+            btn = gtk.Button(label = decimal_point)
             btn.connect("clicked", self.dot_clicked)
             tbl.attach(btn, 1, 2, 4, 5)
         else :
@@ -431,8 +436,8 @@ class CellRendererMx(gtk.CellRendererText):
             old_value = self.result_entry.get_text()
             if (old_value == '0') :
                 value = value[1:10]
-            if value == '.' :
-                value = '0.'
+            if value == decimal_point :
+                value = '0' + decimal_point
             if (value == '') :
                 value = '0'
             self.result_entry.set_markup('<big><b>%s</b></big>' % value[0:10])
@@ -456,10 +461,10 @@ class CellRendererMx(gtk.CellRendererText):
             elif k_name in ['KP_Decimal', 'period', 'comma'] :
                 if (self.editdata_type == 'float') :
                     if self.vkb_initialize :
-                        self.set_vkb_result('.')
+                        self.set_vkb_result(decimal_point)
                     else :
-                        if lbl.find('.') == -1 :
-                            self.set_vkb_result(lbl + '.')
+                        if lbl.find(decimal_point) == -1 :
+                            self.set_vkb_result(lbl + decimal_point)
             elif k_name in ['KP_Subtract', 'KP_Add', 'plus', 'minus'] :
                 self.change_sign_clicked(None)
             elif k_name == 'BackSpace' :
@@ -479,11 +484,11 @@ class CellRendererMx(gtk.CellRendererText):
 
     def dot_clicked(self, btn):
         if self.vkb_initialize :
-            self.set_vkb_result('.')
+            self.set_vkb_result(decimal_point)
         else :
             lbl = self.result_entry.get_text()
-            if lbl.find('.') == -1 :
-                self.set_vkb_result(lbl + '.')
+            if lbl.find(decimal_point) == -1 :
+                self.set_vkb_result(lbl + decimal_point)
 
     def change_sign_clicked(self, btn):
         if self.vkb_initialize :
@@ -528,7 +533,7 @@ class CellRendererMx(gtk.CellRendererText):
         elif self.editdata_type == 'float' :
             self.create_VKB(cell_area)
             if self.vkb.run() == gtk.RESPONSE_OK:
-                val = get_float(self.result_entry.get_text())
+                val = get_float(self.result_entry.get_text().replace(decimal_point, '.'))
                 if val > self.max_value :
                     val = self.max_value
                 if val < self.min_value :
@@ -2776,7 +2781,7 @@ class Features(gtk.VBox):
 
         elif keyname in ['KP_Subtract', 'KP_Add', 'plus', 'minus'] :
             if path :
-                self.edit_cell.set_Input('-')
+                self.edit_cell.set_Input(decimal_point)
                 self.treeview.set_cursor_on_cell(path, focus_column = self.col_value, start_editing = True)
             return True
 
@@ -2839,7 +2844,7 @@ class Features(gtk.VBox):
 
         elif keyname in ['KP_Decimal', 'period', 'comma'] :
             if path :
-                self.cell_value2.set_Input('.')
+                self.cell_value2.set_Input(decimal_point)
                 self.treeview2.set_cursor_on_cell(path, focus_column = self.col_value2, start_editing = True)
             return True
 
@@ -3533,6 +3538,8 @@ class Features(gtk.VBox):
         elif data_type == 'filename':
             h, t = os.path.split(val)
             cell.set_property('text', t)
+        elif data_type == 'float':
+            cell.set_property('text', val.replace('.', decimal_point))
         else :
             cell.set_property('text', val)
 
